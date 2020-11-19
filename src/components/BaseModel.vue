@@ -52,6 +52,12 @@
         Submit
       </button>
       <button
+        class="mx-2 rounded-full bg-blue-800 py-2 px-3 text-xs font-bold cursor-pointer tracking-wider text-white hover:bg-blue-100 hover:text-black"
+        @click="predictDrawing"
+      >
+        Predict
+      </button>
+      <button
         class="mx-2 rounded-full bg-gray-200 py-2 px-3 text-xs font-bold cursor-pointer tracking-wider text-navy-800 hover:bg-blue-800 hover:text-white"
         @click="clearCanvas"
       >
@@ -62,7 +68,9 @@
 </template>
 
 <script>
-import MNISTmodel from "@/utils/model.js";
+const MNIST_MODEL_PATH = "./model/model.json";
+
+import { mnistCNNModel, disposeTFVariables } from "../utils/index";
 
 export default {
   name: "BaseCanvas",
@@ -74,7 +82,7 @@ export default {
       x: 0,
       y: 0,
       isDrawing: false,
-      model: MNISTmodel,
+      raw_predictions: [],
     };
   },
   methods: {
@@ -157,10 +165,23 @@ export default {
       this.clearCanvas();
       console.log(image_img);
     },
+    predictDrawing() {
+      let input_img = this.getImageData();
+      console.log(this.cnn_model.predictDrawing(input_img));
+    },
   },
   mounted() {
     var c = document.getElementById("c");
     this.canvas = c.getContext("2d");
+
+    this.cnn_model = new mnistCNNModel();
+
+    Promise.all([this.cnn_model.init(MNIST_MODEL_PATH)]).then(() =>
+      console.log("Loaded the model")
+    );
+  },
+  beforeUnmount: function () {
+    disposeTFVariables();
   },
 };
 </script>
