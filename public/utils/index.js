@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import * as tf from "@tensorflow/tfjs";
 import * as loader from "./loader";
 import { preprocess } from "./utils";
@@ -21,9 +20,9 @@ class mnistCNNModel {
         tf.tidy(() => {
             try {
                 let preprocessd_img = preprocess(img);
-                const predictOut = this.model.predict(preprocessd_img).argMax(1);
-                // const winner = predictOut.argMax(1);
-                console.log(predictOut.dataSync());
+                let preds = this.model.predict(preprocessd_img).dataSync();
+                // let preds = Array.from(softmax).map(n => parseFloat(n.toPrecision(4)));
+                console.log(preds);
 
                 // return this.model.predict(preprocessd_img).dataSync();
             } catch (e) {

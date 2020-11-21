@@ -1,17 +1,71 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-body">
+    <div class="bg-gray-600 p-3"></div>
+    <div class="flex flex-col items-center align-middle">
+        <h1 class="text-grey-800 uppercase p-4 font-bold text-2xl">Ruin this ML</h1>
+        <h2 class="text-grey-200 p-4 text-xl">
+            Draw Numbers and Purposely Submit Incorrect Data back
+        </h2>
+
+        <main class="flex flex-col items-center">
+            <div class="flex flex-row">
+                <div id="paint" class="border-2 border-gray-200" style="width: 300px; height: 300px;">
+                    <canvas id="myCanvas" width="300" height="300"></canvas>
+                </div>
+                <div class="border-l-2 border-black m-4"></div>
+                <div class="rounded border-2 border-gray-200 px-6">
+                    <div>
+                        <div class="py-2 border-b-2 border-gray-100 font-semibold">
+                            <h2>Prediction & Correction</h2>
+                        </div>
+                        <div class="py-5">
+                            <p class="font-semibold px-5">Predicted <span id="number" class="text-gray-500 pl-6"></span>
+                            </p>
+                        </div>
+                        <div class="py-5 border-gray-100">
+                            <form action="" class="flex flex-col">
+                                <div class="form-group">
+                                    <label for="correction" class="font-semibold px-5">Correction</label>
+                                    <input class="font-semibold text-gray-500 border-2 border-gray-200 px-2"
+                                        type="number" name="correction" id="correction" placeholder="0" min=0 max="9" />
+                                </div>
+                                <button
+                                    class="btn m-5 bg-secondary-100 text-secondary-200 hover:bg-secondary-200 hover:text-secondary-100 transform hover:scale-115 hover:bg-opacity-50 transition ease-out duration-300">Submit</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button id="clear"
+                class="btn m-5 bg-secondary-100 text-secondary-200 hover:bg-secondary-200 hover:text-secondary-100 transform hover:scale-115 hover:bg-opacity-50 transition ease-out duration-300">Clear</button>
+
+            <div class="px-3 py-4 flex justify-center">
+                <table class="w-full text-md bg-white shadow-md rounded mb-4">
+                    <tbody>
+                        <tr class="border-b">
+                            <th class="text-left p-3 px-5">Record</th>
+                            <th class="text-left p-3 px-5">Image</th>
+                            <th class="text-left p-3 px-5">Prediction</th>
+                            <th class="text-left p-3 px-5">Correction</th>
+                            <th class="text-left p-3 px-5">Weight</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="script.js"></script>
+
 </html>
