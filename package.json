@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sjrusso8/ruin-my-ml#readme",
   "dependencies": {
+    "@tensorflow/tfjs": "^2.7.0",
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
