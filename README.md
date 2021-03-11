@@ -1,5 +1,7 @@
 # Ruin my Machine Learning Model
 
+Life got in the way and I did not get to finish this project.  I have moved onto other topics on my github.
+
 Currently a work in progress. Need to wire everything together and allow a user to retrain the model with bad data.
 
 ## The Concept
